@@ -1,10 +1,20 @@
-var path = require('path')
-const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
+var path = require('path');
+const express = require('express');
+const mockAPIResponse = require('./mockAPI.js');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express()
 
-app.use(express.static('dist'))
+const apiKey = process.env.API_KEY;
+let requestBody = {
+    "key": apiKey,
+    "of": "json",
+    "lang": "auto",
+}
+
+app.use(express.static('../../dist'))
 
 console.log(__dirname)
 
