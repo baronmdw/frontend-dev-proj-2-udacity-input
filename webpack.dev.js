@@ -7,11 +7,14 @@ module.exports = {
     entry: './src/client/index.js',
     output: {
         libraryTarget: 'var',
-        library: 'Client'
+        library: 'Client',
+        filename: 'main.js',
+        path: path.resolve(__dirname,'public/')
     },
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    target: 'web',
     module: {
         rules: [
             {
@@ -23,7 +26,7 @@ module.exports = {
                 test: /.scss$/,
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             }
-        ]
+        ],
     },
     plugins: [
         new HtmlWebPackPlugin({

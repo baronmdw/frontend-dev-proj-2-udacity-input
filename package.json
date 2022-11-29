@@ -6,15 +6,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server/index.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "build-dev": "webpack-dev-server --config webpack.dev.js --open"
+    "build-dev": "webpack-dev-server --config webpack.dev.js --open --hot"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
+    "form-data": "^4.0.0",
+    "node-fetch": "^3.3.0",
+    "request": "^2.88.2",
     "webpack-cli": "^5.0.0"
   },
   "devDependencies": {
