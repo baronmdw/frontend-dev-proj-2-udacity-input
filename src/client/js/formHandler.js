@@ -16,7 +16,10 @@ function handleSubmit(event) {
     })
     .then(res => res.json())
     .then(function(res) {
-        document.getElementById('results').innerHTML = res.agreement+ res.confidence+ res.irony +res.subjectivity
+        document.getElementById('agreement').innerHTML = res.agreement;
+        document.getElementById('confidence').innerHTML = res.confidence;
+        document.getElementById('irony').innerHTML = res.irony;
+        document.getElementById('subjectivity').innerHTML = res.subjectivity
     })
 }
 
