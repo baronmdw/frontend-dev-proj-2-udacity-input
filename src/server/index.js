@@ -51,7 +51,8 @@ app.post('/test', function (req, res) {
             body += dataPart;
         })
         res.on('end', () => {
-            console.log(body);
+            bodyObject = JSON.parse(body);
+            console.log(bodyObject["agreement"], bodyObject["confidence"], bodyObject["irony"], bodyObject["subjectivity"]);
         })
     });
     res.send(mockAPIResponse)
