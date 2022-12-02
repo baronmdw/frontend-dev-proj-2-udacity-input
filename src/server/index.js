@@ -20,6 +20,8 @@ let requestBody = {
     lang: "auto",
 }
 
+global.outputData = {};
+
 app.use(express.static('../../dist'))
 
 console.log(__dirname)
@@ -36,24 +38,30 @@ app.listen(8081, function () {
 app.post('/test', function (req, res) {
     const inputData = req.body.inputText;
     requestBody["txt"] = inputData;
-    console.log(req.body.inputText);
-    console.log(requestBody);
+    
+    // Create FormData Object and fill with content necessary to get proper response from Meaningcloud API sentiment analysis
     const formularData = new FormData();
     formularData.append('key', apiKey);
     formularData.append('of', 'json');
     formularData.append('lang', 'en');
     formularData.append('txt', inputData)
-    console.log(formularData)
 
-    formularData.submit('https://api.meaningcloud.com/sentiment-2.1',function(err, res) {
-        let body = "";
-        res.on('data', (dataPart) => {
-            body += dataPart;
+    
+    // send FormData Object to Meaningcloud api sentiment analysis
+    formularData.submit('https://api.meaningcloud.com/sentiment-2.1',function(error, response) {
+        let responseString = "";
+        // responsestring generated from http.incomingMessage object snippets
+        response.on('data', (dataPart) => {
+            responseString += dataPart;
         })
-        res.on('end', () => {
-            bodyObject = JSON.parse(body);
-            console.log(bodyObject["agreement"], bodyObject["confidence"], bodyObject["irony"], bodyObject["subjectivity"]);
+        // when responsestring is finished: generate JSON object and send as response.
+        response.on('end', () => {
+            res.send(JSON.parse(responseString));
         })
-    });
-    res.send(mockAPIResponse)
+    })
+    
 })
+
+async function submitFormular(formularData) {
+    
+}
