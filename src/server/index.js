@@ -56,6 +56,7 @@ app.post('/test', function (req, res) {
         })
         // when responsestring is finished: generate JSON object and send as response.
         response.on('end', () => {
+            console.log(responseString);
             res.send(JSON.parse(responseString));
         })
     })
