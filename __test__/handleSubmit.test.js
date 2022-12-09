@@ -1,8 +1,11 @@
 import puppeteer from "puppeteer";
 import { handleSubmit } from "../src/client/js/formHandler"
 
+window.alert = jest.fn()
+
 describe("Handle Submit Tests", () => {
-    test("Check if Request is sent", async () => {
+    test("Check if Request is sent when form is filled", async () => {
+        window.alert.mockClear();
         // Handle Submit is tested in E2E test since it relies on (almost) only DOM Elements and contains an integrated function as well
         // Set up Browser Instance and receive from localhost
         const browserInstance = await puppeteer.launch({
