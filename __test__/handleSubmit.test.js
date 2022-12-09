@@ -19,5 +19,5 @@ describe("Handle Submit Tests", () => {
         // evaluate content on webpage
         const agreement = await page.$eval('#agreement', el => el.textContent);
         await expect(agreement).toBe(output);
-    },10000);
+    },20000);
 });
