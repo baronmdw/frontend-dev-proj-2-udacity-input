@@ -20,4 +20,6 @@ open second terminal
 
 npm test
 
-now everything should be up and running -> navigate to localhost:8081 in your favorite browser
+now everything should be up and running 
+Make sure to delete your browser history if you reviewed this project before
+-> navigate to localhost:8081 in your favorite browser
